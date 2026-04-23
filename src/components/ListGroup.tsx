@@ -1,11 +1,15 @@
 function ListGroup() {
   const items = ["Bangalore", "Pune", "Mumbai", "Chennai", "Delhi"];
 
-  items.length = 0;
-
-//   const message = items.length === 0 ? <p>No item found</p> : null;
-    // More concise way to write the code without null.
+  //   const message = items.length === 0 ? <p>No item found</p> : null;
+  // More concise way to write the code without null.
   const message = items.length === 0 && <p>No item found</p>;
+
+  // Event Handler
+  const handleClick = (event: MouseEvent) => {
+    // console.log("Clicked " + item + ", index=" + index)
+        console.log(event)
+    };
 
   return (
     /**
@@ -24,9 +28,20 @@ function ListGroup() {
       <h1>List</h1>
       {message}
       <ul className="list-group">
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
+        {items.map(
+          (
+            item,
+            index, // Here index parameter is optional.
+          ) => (
+            <li
+              className="list-group-item"
+              key={item}
+              onClick={handleClick}
+            >
+              {item}
+            </li>
+          ),
+        )}
       </ul>
     </>
   );
