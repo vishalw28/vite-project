@@ -10,14 +10,13 @@ function ListGroup() {
   // Event Handler
   const handleClick = (event: MouseEvent) => {
     // console.log("Clicked " + item + ", index=" + index)
-        console.log(event)
-    };
+    console.log(event);
+  };
 
-//    let selectedIndex = 0; // Local to function, hence use the managed state i.e. useState
-    // Hook i.e. state hook
-    const [selectedIndex, setSelectedIndex] = useState(-1)
-    
-    
+  //    let selectedIndex = 0; // Local to function, hence use the managed state i.e. useState
+  // Hook i.e. state hook which will be specific the component. If we add another listgroup, then it will has its own state.
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
     /**
      * In react component can't return more than one element.
@@ -41,11 +40,13 @@ function ListGroup() {
             index, // Here index parameter is optional.
           ) => (
             <li
-              className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'}
-              key={item}
-              onClick={
-                () => setSelectedIndex(index)
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
               }
+              key={item}
+              onClick={() => setSelectedIndex(index)}
             >
               {item}
             </li>
