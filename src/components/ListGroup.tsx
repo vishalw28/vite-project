@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function ListGroup() {
   const items = ["Bangalore", "Pune", "Mumbai", "Chennai", "Delhi"];
 
@@ -11,6 +13,11 @@ function ListGroup() {
         console.log(event)
     };
 
+//    let selectedIndex = 0; // Local to function, hence use the managed state i.e. useState
+    // Hook i.e. state hook
+    const [selectedIndex, setSelectedIndex] = useState(-1)
+    
+    
   return (
     /**
      * In react component can't return more than one element.
@@ -34,9 +41,11 @@ function ListGroup() {
             index, // Here index parameter is optional.
           ) => (
             <li
-              className="list-group-item"
+              className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'}
               key={item}
-              onClick={handleClick}
+              onClick={
+                () => setSelectedIndex(index)
+              }
             >
               {item}
             </li>
