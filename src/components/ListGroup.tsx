@@ -3,7 +3,9 @@ function ListGroup() {
 
   items.length = 0;
 
-  const message = items.length === 0 ? <p>No item found</p> : null;
+//   const message = items.length === 0 ? <p>No item found</p> : null;
+    // More concise way to write the code without null.
+  const message = items.length === 0 && <p>No item found</p>;
 
   return (
     /**
