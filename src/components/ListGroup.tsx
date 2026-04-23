@@ -3,14 +3,6 @@ function ListGroup() {
 
   items.length = 0;
 
-  if (items.length === 0)
-    return (
-      <>
-        <h1>List</h1>
-        <p>No item found</p>
-      </>
-    );
-
   return (
     /**
      * In react component can't return more than one element.
@@ -26,6 +18,7 @@ function ListGroup() {
     // You can check by inspecting in the browser.
     <>
       <h1>List</h1>
+      {items.length === 0 ? <p>No item found</p> : null}
       <ul className="list-group">
         {items.map((item) => (
           <li key={item}>{item}</li>
